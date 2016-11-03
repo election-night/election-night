@@ -1,52 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset='utf-8'>
-        <title>Election Night</title>
 
-        <link href='css/main.css' rel='stylesheet' type='text/css'>
-    </head>
-    <body>
+<head>
+    <meta charset='utf-8'>
+    <title>Election Night</title>
 
-        <header>
-            <h1>Election Night</h1>
-        </header>
+    <link href='css/main.css' rel='stylesheet' type='text/css'>
+</head>
 
-        <nav>
-            <ul>
-                <li><a class='show-???-list' href='#'>Show List of Candidates</a></li>
-                <!-- what other nav do we need? -->
-                <!-- how can we make a specific section below visible? HINT: look at the _nav.scss file! -->
-            </ul>
-        </nav>
+<body>
 
-        <main>
-            <section class='list-of-???'>
-                <h2>List of [WHAT?]</h2>
-                <ul></ul>
-            </section>
+    <header>
+        <h1>Election Night</h1>
+    </header>
 
-            <!-- what other sections do we need? -->
+    <nav>
+        <ul>
+            <li><a class='show-???-list' href='#'>Show List of Candidates</a></li>
+            <!-- what other nav do we need? -->
+            <!-- how can we make a specific section below visible? HINT: look at the _nav.scss file! -->
+        </ul>
+    </nav>
 
-            <section class='create-a-???'>
-                <h2>Create a New [WHAT?]</h2>
-                <form>
-                    <aside>
-                        <label for='new-name'>Name</label>
-                        <input type='text' id='name' name='name' required>
-                    </aside>
+    <main>
+        <section class='list-of-candidates'>
+            <h2>List of Candidates</h2>
+            <ul></ul>
+        </section>
 
-                    <!-- What else do we need? -->
+        <!-- what other sections do we need? -->
 
-                    <aside>
-                        <input type='submit' value='Create [WHAT?]'>
-                    </aside>
-                </form>
-            </section>
+        <section class='create-a-???'>
+            <h2>Create a New Campaign</h2>
+            <form>
+                <aside>
+                    <label for='new-name'>Name</label>
+                    <input type='text' id='name' name='name' required>
+                </aside>
 
-        </main>
+                <!-- What else do we need? -->
 
-      <script src='js/data.js'></script>
-      <script src='js/ui.js'></script>
-    </body>
+                <aside>
+                    <input type='submit' value='Create Campaign' class='create-campaign'>
+                </aside>
+            </form>
+        </section>
+
+    </main>
+
+    <script src='https://code.jquery.com/jquery-3.1.1.js'></script>
+    <script src='js/data.js'></script>
+    <script src='js/ui.js'></script>
+</body>
+
 </html>
