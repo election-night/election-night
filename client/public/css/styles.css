@@ -5,14 +5,16 @@ section {
   border-radius: 5px;
   width: 500px;
   height: 500px;
-  margin: 10px 30px 0 70px; }
+  margin: 0px 30px 0 70px; }
 
 h2 {
   color: #ffffff;
-  text-align: center; }
+  text-align: center;
+  font-family: "IM Fell Great Primer SC", serif; }
 
 aside {
-  padding: 20px 0 20px 0; }
+  padding: 20px 0 20px 0;
+  font-family: "IM Fell Great Primer SC", serif; }
 
 label {
   color: #ffffff; }
@@ -432,5 +434,12 @@ h1 {
   text-align: center;
   font-family: 'IM Fell Great Primer SC', serif;
   font-size: 3em; }
+
+ul {
+  display: inline; }
+
+.show-candidate-list {
+  text-decoration: none;
+  color: #ffffff; }
 
 /*# sourceMappingURL=styles.css.map */
