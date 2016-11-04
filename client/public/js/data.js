@@ -10,7 +10,19 @@
         console.log($('.create-a-candidate') );
         $('.create-a-candidate').toggleClass('visible');
 
-      })
+      });
+    $('.show-candidates')
+      .on('click', function seeCandidates(event){
+        event.preventDefault();
+        console.log('it works');
+        $('.candidates').toggleClass('visible');
+      });
+    $('.show-campaigns')
+      .on('click', function showCampaign(event){
+        event.preventDefault();
+        console.log('it works');
+        $('.all-campaigns').toggleClass('visible');
+      });
 
 
     $('.candidate')
