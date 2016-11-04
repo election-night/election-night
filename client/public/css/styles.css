@@ -1,6 +1,8 @@
 body {
-  background: #493beb; }
+  background: url("patriotic.jpg"); }
 
-/* What do we put in here? */
+h1 {
+  color: #ffffff;
+  text-align: center; }
 
 /*# sourceMappingURL=styles.css.map */
