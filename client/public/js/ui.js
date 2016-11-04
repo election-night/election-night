@@ -16,13 +16,12 @@
         .on('click', function seeCandidates(event) {
             event.preventDefault();
             console.log('it works');
-            $('.candidates').toggleClass('visible');
+            window.ns.toggleVisible($('.candidates'));
         });
     $('.show-campaigns')
         .on('click', function showCampaign(event) {
             event.preventDefault();
-            console.log('it works');
-            $('.all-campaigns').toggleClass('visible');
+            window.ns.toggleVisible($('.all-campaigns'));
         });
 
 
