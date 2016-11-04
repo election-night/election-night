@@ -3,6 +3,15 @@
 
     window.ns = window.ns || {};
 
+    $('.create-candidates')
+      .on('click', function showCandidate(event){
+        event.preventDefault();
+        console.log('it works');
+        console.log($('.create-a-candidate') );
+        $('.create-a-candidate').toggleClass('visible');
+
+      })
+
 
     $('.candidate')
         .on('submit', function createCandidate(event) {
@@ -58,6 +67,8 @@
           })
 
         });
+
+
 
 
     console.log('Data file Connected');
