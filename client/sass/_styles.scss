@@ -5,16 +5,18 @@ section{
   border-radius: 5px;
   width: 500px;
   height: 500px;
-  margin: 10px 30px 0 70px;
+  margin: 0px 30px 0 70px;
 }
 
 h2 {
   color: #ffffff;
   text-align: center;
+  font-family: $themeFont;
 }
 
 aside {
   padding: 20px 0 20px 0;
+  font-family: $themeFont;
 }
 
 label {
