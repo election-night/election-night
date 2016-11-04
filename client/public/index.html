@@ -32,25 +32,29 @@
 
         <section class='create-a-candidate'>
             <h2>Create a Candidate</h2>
-            <form class='first-candidate'>
+            <form class='candidate'>
                 <aside>
-                    <label for='first-name'>First Name</label>
+                    <label for='first-name'>First Name:</label>
                     <input type='text' id='first-name' name='first-name' required>
                 </aside>
                 <aside>
-                    <label for='last-name'>Last Name</label>
+                    <label for='last-name'>Last Name:</label>
                     <input type='text' id='last-name' name='last-name' required>
                 </aside>
                 <aside>
-                    <label for='intelligence'>Intelligence</label>
+                    <label for='image-url'>Avatar:</label>
+                    <input type='file' id='image-url' name='image-url'>
+                </aside>
+                <aside>
+                    <label for='intelligence'>Intelligence:</label>
                     <input type='text' id='intelligence' name='intelligence' placeholder='1-10' required>
                 </aside>
                 <aside>
-                    <label for='charisma'>Charisma</label>
+                    <label for='charisma'>Charisma:</label>
                     <input type='text' id='charisma' name='charisma' placeholder='1-10' required>
                 </aside>
                 <aside>
-                    <label for='willpower'>Willpower</label>
+                    <label for='willpower'>Willpower:</label>
                     <input type='text' id='willpower' name='willpower' placeholder='1-10' required>
                 </aside>
                 <aside>
@@ -58,37 +62,45 @@
                     <input type='submit' id='new-candidate' name='candidate'>
                 </aside>
 
+
                 <!-- What else do we need? -->
-
-
             </form>
         </section>
 
         <section class='create-2-candidate'>
             <h2>Create a Candidate</h2>
-            <form class='second-candidate'>
+            <form class='candidate'>
               <aside>
-                  <label for='first-name'>First Name</label>
+                  <label for='first-name'>First Name:</label>
                   <input type='text' id='first-name' name='first-name' required>
               </aside>
               <aside>
-                  <label for='last-name'>Last Name</label>
+                  <label for='last-name'>Last Name:</label>
                   <input type='text' id='last-name' name='last-name' required>
               </aside>
-                    <label for='intelligence'>Intelligence</label>
+              <aside>
+                  <label for='image-url'>Avatar:</label>
+                  <input type='file' id='image-url' name='image-url'>
+              </aside>
+              <aside>
+                    <label for='intelligence'>Intelligence:</label>
                     <input type='text' id='intelligence' name='intelligence' placeholder='1-10' required>
                 </aside>
                 <aside>
-                    <label for='charisma'>Charisma</label>
+                    <label for='charisma'>Charisma:</label>
                     <input type='text' id='charisma' name='charisma' placeholder='1-10' required>
                 </aside>
                 <aside>
-                    <label for='willpower'>Willpower</label>
+                    <label for='willpower'>Willpower:</label>
                     <input type='text' id='willpower' name='willpower' placeholder='1-10' required>
                 </aside>
                 <aside>
                     <label for='new-candidate'></label>
                     <input type='submit' id='new-candidate' name='candidate'>
+                </aside>
+                <aside>
+                  <!-- Create Campaign button -->
+                    <input type='submit' value='Create Campaign' class='create-campaign'>
                 </aside>
 
                 <!-- What else do we need? -->
@@ -96,10 +108,9 @@
             </form>
         </section>
 
-        <aside>
-          <!-- Create Campaign button -->
-            <input type='submit' value='Create Campaign' class='create-campaign'>
-        </aside>
+
+
+
 
     </main>
 
