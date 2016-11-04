@@ -10,11 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104105513) do
+ActiveRecord::Schema.define(version: 20161104165505) do
 
   create_table "campaigns", force: :cascade do |t|
-    t.integer  "candidate1"
-    t.integer  "candidate2"
     t.integer  "winner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
