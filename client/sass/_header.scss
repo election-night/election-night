@@ -1,4 +1,14 @@
 h1{
   color: #ffffff;
   text-align: center;
+  font-family: 'IM Fell Great Primer SC', serif;
+  font-size: 3em;
+}
+
+ul {
+  display: inline;
+}
+.show-candidate-list {
+  text-decoration: none;
+  color: $fontColor;
 }
