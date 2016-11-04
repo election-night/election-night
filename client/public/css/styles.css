@@ -442,4 +442,10 @@ ul {
   text-decoration: none;
   color: #ffffff; }
 
+section {
+  display: none; }
+
+section.visible {
+  display: block; }
+
 /*# sourceMappingURL=styles.css.map */
