@@ -78,7 +78,7 @@ class App < Sinatra::Base
 
   end
 
-  post "/candidates" do
+  post "/candidates" do #create candidate
 
   end
 
