@@ -6,4 +6,5 @@ class AppTest < Minitest::Test
   def app
     App
   end
+
 end
