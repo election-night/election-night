@@ -36,4 +36,12 @@ class CampaignTest < Minitest::Test
     assert_equal "Ben", campaign.candidates.first.first_name
   end
 
+  def test_candidate1_wins
+    candidate1 = Candidate.create!(candidate_info)
+    candidate2 = Candidate.create!(russell_s_info)
+    campaign = Campaign.create!(candidates: [candidate1, candidate2])
+    campaign.pick_winner
+    assert_equal candidate1.id, campaign.winner_id
+  end
+
 end

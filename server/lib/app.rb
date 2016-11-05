@@ -48,14 +48,7 @@ class App < Sinatra::Base
 
   get "/candidates/:id/wins" do
     candidate = Candidate.find_by(id: params["id"])
-    wins = []
-    campaigns = Campaign.all
-    campaigns.each do |campaign|
-      if campaign.winner_id == candidate.id
-        wins << campaign
-      end
-    end
-    #wins = Campaign.where("winner_id" == candidate.id)
+    wins = candidate.campaigns_won_list
     if candidate
       if wins == []
         status 404
@@ -143,6 +136,21 @@ class App < Sinatra::Base
     end
   end
 
+  get "/candidates/:id/total_points" do
+
+  end
+
+  patch "/candidates/:id/intelligence" do
+
+  end
+
+  patch "/candidates/:id/charisma" do
+
+  end
+
+  patch "/candidates/:id/willpower" do
+
+  end
+
   run! if app_file == $PROGRAM_NAME
-  
 end
