@@ -40,19 +40,19 @@
                 </aside>
                 <aside>
                     <label for='image-url'>Avatar:</label>
-                    <input type='file' id='image-url' name='image-url'>
+                    <input type='url' id='image-url' name='image-url' required>
                 </aside>
                 <aside>
                     <label for='intelligence'>Intelligence:</label>
-                    <input type='text' id='intelligence' name='intelligence' placeholder='1-10' required>
+                    <input type='number' min='1' max ='10' id='intelligence' name='intelligence' placeholder='#' required>
                 </aside>
                 <aside>
                     <label for='charisma'>Charisma:</label>
-                    <input type='text' id='charisma' name='charisma' placeholder='1-10' required>
+                    <input type='number' min='1' max='10' id='charisma' name='charisma' placeholder='#' required>
                 </aside>
                 <aside>
                     <label for='willpower'>Willpower:</label>
-                    <input type='text' id='willpower' name='willpower' placeholder='1-10' required>
+                    <input type='number' min='1' max='10' id='willpower' name='willpower' placeholder='#' required>
                 </aside>
                 <aside>
                     <label for='new-candidate'></label>
@@ -77,19 +77,19 @@
               </aside>
               <aside>
                   <label for='image-url'>Avatar:</label>
-                  <input type='file' id='image-url' name='image-url'>
+                  <input type='url' id='image-url' name='image-url' required>
               </aside>
               <aside>
                     <label for='intelligence'>Intelligence:</label>
-                    <input type='text' id='intelligence' name='intelligence' placeholder='1-10' required>
+                    <input type='number' min='1' max='10' id='intelligence' name='intelligence' placeholder='#' required>
                 </aside>
                 <aside>
                     <label for='charisma'>Charisma:</label>
-                    <input type='text' id='charisma' name='charisma' placeholder='1-10' required>
+                    <input type='number' min='1' max='10' id='charisma' name='charisma' placeholder='#' required>
                 </aside>
                 <aside>
                     <label for='willpower'>Willpower:</label>
-                    <input type='text' id='willpower' name='willpower' placeholder='1-10' required>
+                    <input type='number' min='1' max='10' id='willpower' name='willpower' placeholder='#' required>
                 </aside>
                 <aside>
                     <label for='new-candidate'></label>
@@ -104,6 +104,13 @@
 
             </form>
         </section>
+
+        <section class='candidate-battle'>
+          <ul>
+
+          <ul>
+        </section>
+
     </main>
 
     <script src='https://code.jquery.com/jquery-3.1.1.js'></script>
