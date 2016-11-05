@@ -3,8 +3,8 @@
 
     window.ns = window.ns || {};
 
-    window.ns.toggleVisible = function toggleVisible(htmlElement){
-      htmlElement.toggleClass('visible');
+    window.ns.toggleVisible = function toggleVisible(htmlElement) {
+        htmlElement.toggleClass('visible');
     }
 
     $('.create-candidates')

@@ -32,13 +32,44 @@
                     headers: {
                         'Content-Type': 'application/json'
                     }
-                })
-            });
+
+                    })
+                    .done(function handleSuccess(data) {
+                        console.log('It worked', data);
+                    })
+                    // Include statements shown to the user that the data did not go through
+                    // else there was a 500 server error
+                    .fail(function handleFailure(xhr) {
+                        console.log('It didn"t work', xhr);
+                    })
+
+              });
+
+        };
 
 
-    };
+            // PATCH SHOULD BE A SUBMIT ON ITS OWN BUTTON FOR THIS TO TAKE PLACE
+        // $('.candidate')
+        //     .on('submit', function updateCandidate(event) {
+        //         event.preventDefault();
+        //         $.ajax({
+        //             url: '/candidates/:id/first_name',
+        //             method: 'PATCH',
+        //             dataType: 'json',
+        //             data: JSON.stringify({
+        //                 first_name: candidateInfo.firstName
+        //             }),
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             }
+        //         })
+        //     });
 
 
+
+
+
+    // 
     $('.candidate')
         .on('submit', function recieveCandidate(event) {
             event.preventDefault();
@@ -62,21 +93,7 @@
 
         });
 
-    $('.candidate')
-        .on('submit', function updateCandidate(event) {
-            event.preventDefault();
-            $.ajax({
-                url: '/candidates/:id/first_name',
-                method: 'PATCH',
-                dataType: 'json',
-                data: JSON.stringify({
-                    first_name: candidateInfo.firstName,
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-        })
+
 
     $('.create-campaign')
         .on('submit', function createCampaign(event) {
