@@ -137,19 +137,27 @@ class App < Sinatra::Base
   end
 
   get "/candidates/:id/total_points" do
-
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      {points: candidate.total_points}.to_json
+    else
+      status 404
+      {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+    end
   end
 
-  patch "/candidates/:id/intelligence" do
-
-  end
-
-  patch "/candidates/:id/charisma" do
-
-  end
-
-  patch "/candidates/:id/willpower" do
-
+  patch "/candidates/:id/characteristics" do
+    request_body = request.body.read
+    candidate_characteristics = JSON.parse(request_body)
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate.update(intelligence: candidate_characteristics["intelligence"])
+      candidate.update(charisma: candidate_characteristics["charisma"])
+      candidate.update(willpower: candidate_characteristics["willpower"])
+    else
+      status 404
+      {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+    end
   end
 
   run! if app_file == $PROGRAM_NAME

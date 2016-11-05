@@ -158,6 +158,23 @@ class AppTest < Minitest::Test
     assert_equal "You didn't enter anything!", JSON.parse(last_response.body)["message"]
   end
 
+  def test_can_get_candidate_total_points
+    get "/candidates/#{Candidate.last.id}/total_points"
+    assert_equal 10, JSON.parse(last_response.body)["points"]
+  end
+
+  def test_can_update_a_candidate_characteristics
+    payload = {
+      intelligence: 4,
+      charisma: 3,
+      willpower: 3
+    }
+    patch "/candidates/#{Candidate.last.id}/characteristics", payload.to_json
+    assert_equal 4, Candidate.last.intelligence
+    assert_equal 3, Candidate.last.charisma
+    assert_equal 3, Candidate.last.willpower
+  end
+
 end
 
 
