@@ -3,28 +3,6 @@
 
     window.ns = window.ns || {};
 
-    $('.create-candidates')
-      .on('click', function showCandidate(event){
-        event.preventDefault();
-        console.log('it works');
-        console.log($('.create-a-candidate') );
-        $('.create-a-candidate').toggleClass('visible');
-
-      });
-    $('.show-candidates')
-      .on('click', function seeCandidates(event){
-        event.preventDefault();
-        console.log('it works');
-        $('.candidates').toggleClass('visible');
-      });
-    $('.show-campaigns')
-      .on('click', function showCampaign(event){
-        event.preventDefault();
-        console.log('it works');
-        $('.all-campaigns').toggleClass('visible');
-      });
-
-
     $('.candidate')
         .on('submit', function createCandidate(event) {
             event.preventDefault();
@@ -33,15 +11,15 @@
                     method: 'GET',
                     dataType: 'json',
                     data: JSON.stringify({
-                      // 'first name':,
-                      // 'last name':,
-                      // 'image_url':,
-                      // 'intelligence':,
-                      // 'charisma':,
-                      // 'willpower':
+                        // 'first name':,
+                        // 'last name':,
+                        // 'image_url':,
+                        // 'intelligence':,
+                        // 'charisma':,
+                        // 'willpower':
                     }),
                     headers: {
-                      'Content-Type': 'application/json'
+                        'Content-Type': 'application/json'
                     }
                 })
                 .done(function handleSuccess(data) {
@@ -56,27 +34,27 @@
 
         });
 
-      $('.create-campaign')
-        .on('submit', function createCampaign(event){
-          event.preventDefault();
-          $.ajax({
-            url:'/campaigns',
-            method: 'POST',
-            dataType: 'json',
-            // data: JSON.stringify{
-            //   'candidates':
-            //   'start_date':
-            // },
-            headers: {
-              'Content-Type':'application/json'
-            }
-          })
-          .done(function campaignSuccess(data){
-            console.log('It Worked', data);
-          })
-          .fail(function campaignFailure(xhr){
-            console.log('it failed', xhr);
-          })
+    $('.create-campaign')
+        .on('submit', function createCampaign(event) {
+            event.preventDefault();
+            $.ajax({
+                    url: '/campaigns',
+                    method: 'POST',
+                    dataType: 'json',
+                    // data: JSON.stringify{
+                    //   'candidates':
+                    //   'start_date':
+                    // },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .done(function campaignSuccess(data) {
+                    console.log('It Worked', data);
+                })
+                .fail(function campaignFailure(xhr) {
+                    console.log('it failed', xhr);
+                })
 
         });
 
