@@ -3,6 +3,21 @@
 
     window.ns = window.ns || {};
 
+
+    $('.candidate')
+        .on('submit', function candidateInfo(event) {
+            event.preventDefault();
+            var candidateInfo = {};
+            candidateInfo.firstName = $('#first-name').val();
+            candidateInfo.lastName = $('#last-name').val();
+            candidateInfo.image_url = $('#image-url').val();
+            candidateInfo.intelligence = $('#intelligence').val();
+            candidateInfo.charisma = $('#charisma').val();
+            candidateInfo.willpower = $('#willpower').val();
+            console.log(candidateInfo());
+        });
+
+
     $('.candidate')
         .on('submit', function createCandidate(event) {
             event.preventDefault();
@@ -10,14 +25,6 @@
                     url: '/candidates',
                     method: 'GET',
                     dataType: 'json',
-                    data: JSON.stringify({
-                        // 'first name':,
-                        // 'last name':,
-                        // 'image_url':,
-                        // 'intelligence':,
-                        // 'charisma':,
-                        // 'willpower':
-                    }),
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -31,20 +38,23 @@
                     console.log('It didn"t work', xhr);
                 });
 
-
         });
 
     $('.create-campaign')
         .on('submit', function createCampaign(event) {
             event.preventDefault();
             $.ajax({
-                    url: '/campaigns',
+                    url: '/campaign',
                     method: 'POST',
                     dataType: 'json',
-                    // data: JSON.stringify{
-                    //   'candidates':
-                    //   'start_date':
-                    // },
+                    data: JSON.stringify({
+                        first_name: candidateInfo.firstName,
+                        last_name: candidateInfo.lastName,
+                        image_url: candidateInfo.image_url,
+                        intelligence: candidateInfo.intelligence,
+                        charisma: candidateInfo.charisma,
+                        willpower: candidateInfo.willpower
+                    }),
                     headers: {
                         'Content-Type': 'application/json'
                     }
