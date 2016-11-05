@@ -3,13 +3,23 @@ h1{
   text-align: center;
   font-family: 'IM Fell Great Primer SC', serif;
   font-size: 3em;
+  margin-bottom: 0;
 }
 
 ul {
-  display: inline;
+  text-align: center;
+  font-size: 1.3em;
 }
 
-.show-candidate-list {
+a {
   text-decoration: none;
   color: $fontColor;
+}
+
+li {
+  display: inline;
+  color: $fontColor;
+  text-decoration: none;
+  padding-right: 25px;
+  font-family: $themeFont;
 }
