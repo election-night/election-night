@@ -90,27 +90,59 @@ class App < Sinatra::Base
     end
   end
 
-  patch "/candidates/:id" do #update a single candidate
+  patch "/candidates/:id/first_name" do
+    Candidate.find_by(id: params["id"]).update(first_name: params["update"])
+  end
 
+  patch "/candidates/:id/last_name" do
+    Candidate.find_by(id: params["id"]).update(last_name: params["update"])
+  end
+
+  patch "/candidates/:id/image_url" do
+    Candidate.find_by(id: params["id"]).update(image_url: params["update"])
   end
 
   delete "/candidates/:id" do #delete a single candidate
-
-  end
-
-  post "/campaigns" do #create campaign
-
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate.delete
+    else
+      status 404
+      {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+    end
   end
 
   post "/candidates" do #create candidate
-
+    request_body = request.body.read
+    candidate_info = JSON.parse(request_body)
+    candidate = Candidate.new(candidate_info)
+    if candidate.save
+      status 201
+      candidate.to_json
+    else
+      status 422
+      {errors: {full_messages: candidate.errors.full_messages}}.to_json
+    end
   end
 
-  # You can delete this route but you should nest your endpoints under /api
-  # get '/api' do
-  #   { msg: 'The server is running' }.to_json
-  # end
+  post "/campaigns" do #create campaign
+    request_body = request.body.read
+    if request_body == ""
+      status 422
+      {message: "You didn't enter anything!"}.to_json
+    else
+      campaign_info = JSON.parse(request_body)
+      campaign = Campaign.new {campaign_info}
+      if campaign.save
+        status 201
+        campaign.to_json
+      else
+        status 422
+        {errors: {full_messages: campaign.errors.full_messages}}.to_json
+      end
+    end
+  end
 
-  # If this file is run directly boot the webserver
   run! if app_file == $PROGRAM_NAME
+  
 end
