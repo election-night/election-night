@@ -48,18 +48,42 @@ class App < Sinatra::Base
 
   get "/candidates/:id/wins" do
     candidate = Candidate.find_by(id: params["id"])
+    wins = []
+    campaigns = Campaign.all
+    campaigns.each do |campaign|
+      if campaign.winner_id == candidate.id
+        wins << campaign
+      end
+    end
+    #wins = Campaign.where("winner_id" == candidate.id)
     if candidate
-      #code to calculate total wins
+      if wins == []
+        status 404
+        {message: "Candidate with id ##{params["id"]} has no wins"}.to_json
+      else
+        wins.to_json
+      end
     else
       status 404
       {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
     end
   end
 
-  get "/campaigns/:candidate_id" do #list all campaigns for a single candidate
+  get "/candidates/:id/campaigns" do #list all campaigns for a single candidate
     candidate = Candidate.find_by(id: params["id"])
+    campaigns = candidate.campaigns
+#     Company.where(
+#   "id = :id AND name = :name AND division = :division AND created_at > :accounting_date",
+#   { id: 3, name: "37signals", division: "First", accounting_date: '2005-01-01' }
+# ).first
+    #candidate_campaigns = Campaign.where(":candidates".include?(candidate))
     if candidate
-      #code to list all campaigns with candidate id
+      if campaigns == []
+        status 404
+        {message: "Candidate with id ##{params["id"]} has no campaigns"}.to_json
+      else
+        campaigns.to_json
+      end
     else
       status 404
       {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
