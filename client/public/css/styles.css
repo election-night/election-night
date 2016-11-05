@@ -1,4 +1,4 @@
-section {
+.create-a-candidate {
   padding-left: 20px;
   float: left;
   border: 2px solid #000000;
@@ -17,10 +17,29 @@ aside {
   font-family: "IM Fell Great Primer SC", serif; }
 
 label {
-  color: #ffffff; }
+  color: #ffffff;
+  font-weight: bold; }
 
 input {
   border-radius: 5px; }
+
+.list-of-candidates {
+  margin: 0;
+  padding: 0; }
+
+.url-avatar {
+  width: 200px;
+  height: 200px;
+  float: left; }
+
+.candidate-list {
+  display: block;
+  float: left;
+  padding: 0; }
+
+.candidate-attributes {
+  display: inline;
+  text-align: left; }
 
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
@@ -433,13 +452,28 @@ h1 {
   color: #ffffff;
   text-align: center;
   font-family: 'IM Fell Great Primer SC', serif;
-  font-size: 3em; }
+  font-size: 3em;
+  margin-bottom: 0; }
 
 ul {
-  display: inline; }
+  text-align: center;
+  font-size: 1.3em; }
 
-.show-candidate-list {
+a {
   text-decoration: none;
   color: #ffffff; }
+
+li {
+  display: inline;
+  color: #ffffff;
+  text-decoration: none;
+  padding-right: 25px;
+  font-family: "IM Fell Great Primer SC", serif; }
+
+.create-a-candidate {
+  display: none; }
+
+.create-a-candidate.visible {
+  display: block; }
 
 /*# sourceMappingURL=styles.css.map */
