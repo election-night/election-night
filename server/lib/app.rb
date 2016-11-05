@@ -65,11 +65,6 @@ class App < Sinatra::Base
   get "/candidates/:id/campaigns" do #list all campaigns for a single candidate
     candidate = Candidate.find_by(id: params["id"])
     campaigns = candidate.campaigns
-#     Company.where(
-#   "id = :id AND name = :name AND division = :division AND created_at > :accounting_date",
-#   { id: 3, name: "37signals", division: "First", accounting_date: '2005-01-01' }
-# ).first
-    #candidate_campaigns = Campaign.where(":candidates".include?(candidate))
     if candidate
       if campaigns == []
         status 404
@@ -84,15 +79,33 @@ class App < Sinatra::Base
   end
 
   patch "/candidates/:id/first_name" do
-    Candidate.find_by(id: params["id"]).update(first_name: params["update"])
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate.update(first_name: params["first_name"])
+    else
+      status 404
+      {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+    end
   end
 
   patch "/candidates/:id/last_name" do
-    Candidate.find_by(id: params["id"]).update(last_name: params["update"])
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate.update(last_name: params["last_name"])
+    else
+      status 404
+      {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+    end
   end
 
   patch "/candidates/:id/image_url" do
-    Candidate.find_by(id: params["id"]).update(image_url: params["update"])
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate.update(image_url: params["image_url"])
+    else
+      status 404
+      {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+    end
   end
 
   delete "/candidates/:id" do #delete a single candidate

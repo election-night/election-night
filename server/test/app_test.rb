@@ -92,17 +92,17 @@ class AppTest < Minitest::Test
   end
 
   def test_can_update_a_candidate_first_name
-    patch "/candidates/#{Candidate.last.id}/first_name", update: "Jill"
+    patch "/candidates/#{Candidate.last.id}/first_name", {first_name: "Jill"}
     assert_equal "Jill", Candidate.last["first_name"]
   end
 
   def test_can_update_a_candidate_last_name
-    patch "/candidates/#{Candidate.last.id}/last_name", update: "Potter"
+    patch "/candidates/#{Candidate.last.id}/last_name", {last_name: "Potter"}
     assert_equal "Potter", Candidate.last["last_name"]
   end
 
   def test_can_update_a_candidate_image_url
-    patch "/candidates/#{Candidate.last.id}/image_url", update: "womp.jpeg"
+    patch "/candidates/#{Candidate.last.id}/image_url", {image_url: "womp.jpeg"}
     assert_equal "womp.jpeg", Candidate.last["image_url"]
   end
 
@@ -170,9 +170,9 @@ class AppTest < Minitest::Test
       willpower: 3
     }
     patch "/candidates/#{Candidate.last.id}/characteristics", payload.to_json
-    assert_equal 4, Candidate.last.intelligence
-    assert_equal 3, Candidate.last.charisma
-    assert_equal 3, Candidate.last.willpower
+    assert_equal 4, Candidate.last["intelligence"]
+    assert_equal 3, Candidate.last["charisma"]
+    assert_equal 3, Candidate.last["willpower"]
   end
 
 end
