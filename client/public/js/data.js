@@ -3,23 +3,44 @@
 
     window.ns = window.ns || {};
 
+    function postCandidates(candidateInfo) {
+        var firstname = candidateInfo.firstName
+        var lastname = candidateInfo.lastName
+        var avatar = candidateInfo.image_url
+        var intelligence = candidateInfo.intelligence
+        var charisma = candidateInfo.charisma
+        var willpower = candidateInfo.willpower
+        console.log(candidateInfo);
+
+        window.ns.postCandidates = postCandidates;
+
+        $('.candidate')
+            .on('submit', function createCandidate(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: '/candidates',
+                    method: 'POST',
+                    dataType: 'json',
+                    data: JSON.stringify({
+                        first_name: candidateInfo.firstName,
+                        last_name: candidateInfo.lastName,
+                        image_url: candidateInfo.image_url,
+                        intelligence: candidateInfo.intelligence,
+                        charisma: candidateInfo.charisma,
+                        willpower: candidateInfo.willpower
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+            });
+
+
+    };
+
 
     $('.candidate')
-        .on('submit', function candidateInfo(event) {
-            event.preventDefault();
-            var candidateInfo = {};
-            candidateInfo.firstName = $('#first-name').val();
-            candidateInfo.lastName = $('#last-name').val();
-            candidateInfo.image_url = $('#image-url').val();
-            candidateInfo.intelligence = $('#intelligence').val();
-            candidateInfo.charisma = $('#charisma').val();
-            candidateInfo.willpower = $('#willpower').val();
-            console.log(candidateInfo());
-        });
-
-
-    $('.candidate')
-        .on('submit', function createCandidate(event) {
+        .on('submit', function recieveCandidate(event) {
             event.preventDefault();
             $.ajax({
                     url: '/candidates',
@@ -38,7 +59,24 @@
                     console.log('It didn"t work', xhr);
                 });
 
+
         });
+
+    $('.candidate')
+        .on('submit', function updateCandidate(event) {
+            event.preventDefault();
+            $.ajax({
+                url: '/candidates/:id/first_name',
+                method: 'PATCH',
+                dataType: 'json',
+                data: JSON.stringify({
+                    first_name: candidateInfo.firstName,
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        })
 
     $('.create-campaign')
         .on('submit', function createCampaign(event) {
@@ -47,14 +85,10 @@
                     url: '/campaign',
                     method: 'POST',
                     dataType: 'json',
-                    data: JSON.stringify({
-                        first_name: candidateInfo.firstName,
-                        last_name: candidateInfo.lastName,
-                        image_url: candidateInfo.image_url,
-                        intelligence: candidateInfo.intelligence,
-                        charisma: candidateInfo.charisma,
-                        willpower: candidateInfo.willpower
-                    }),
+                    //data: JSON.stringify({
+                    // "candidate1":
+                    // "candidate2":
+                    //    })
                     headers: {
                         'Content-Type': 'application/json'
                     }
