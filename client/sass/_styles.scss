@@ -61,10 +61,24 @@ input {
 
 .create-a-campaign.visible {
   display: block;
-  margin: 200px 0 0 400px;
+  margin: 200px 100px 0 100px;
 }
 
 .candidate-battle {
   display: inline;
   padding-right: 20px;
+}
+
+.campaign-button {
+  background-color: #ffffff;
+  color: #0000ff;
+}
+
+.winner {
+  display: none;
+}
+
+.winner.visible {
+  display: block;
+  margin-left: 500px;
 }
