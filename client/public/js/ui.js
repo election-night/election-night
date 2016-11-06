@@ -24,10 +24,11 @@
             window.ns.toggleVisible($('.all-campaigns'));
         });
 
-    $('.create-a-campaign')
-        .on('click', function showCandidate(event) {
+    $('.create-campaign')
+        .on('click', function showCampaignBattle(event) {
             event.preventDefault();
-            window.ns.toggleVisible($('.candidate-battle'));
+            console.log('it works');
+            window.ns.toggleVisible($('.create-a-campaign'));
         });
 
 
