@@ -45,6 +45,17 @@ input {
   display: inline;
   text-align: left; }
 
+.create-a-campaign {
+  display: none; }
+
+.create-a-campaign.visible {
+  display: block;
+  margin: 200px 0 0 400px; }
+
+.candidate-battle {
+  display: inline;
+  padding-right: 20px; }
+
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
