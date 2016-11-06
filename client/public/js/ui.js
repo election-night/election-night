@@ -36,6 +36,13 @@
 
     // $('.candidate-battle')
     //     $(this).append('<li><img src="' + image_url + '>' )
+    $('.create-campaign')
+        .on('click', function showCampaignBattle(event) {
+            event.preventDefault();
+            console.log('it works');
+            window.ns.toggleVisible($('.create-a-campaign'));
+        });
+
 
     console.log('UI file Connected');
 }());
