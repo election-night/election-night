@@ -53,6 +53,18 @@ input {
 .candidate-attributes{
   display: inline;
   text-align: left;
+}
 
+.create-a-campaign {
+  display: none;
+}
 
+.create-a-campaign.visible {
+  display: block;
+  margin: 200px 0 0 400px;
+}
+
+.candidate-battle {
+  display: inline;
+  padding-right: 20px;
 }
