@@ -24,6 +24,12 @@
             window.ns.toggleVisible($('.all-campaigns'));
         });
 
+    $('.create-a-campaign')
+        .on('click', function showCandidate(event) {
+            event.preventDefault();
+            window.ns.toggleVisible($('.candidate-battle'));
+        });
+
 
     console.log('UI file Connected');
 }());
