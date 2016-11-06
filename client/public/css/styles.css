@@ -38,7 +38,6 @@ input {
 
 .candidate-list {
   display: block;
-  float: left;
   padding: 0; }
 
 .candidate-attributes {
