@@ -28,9 +28,14 @@ input {
   border-radius: 5px;
 }
 
-.list-of-candidates {
+.candidates {
   margin: 0;
   padding: 0;
+  display: none;
+}
+
+.candidates.visible{
+  display: block;
 }
 
 .url-avatar {
