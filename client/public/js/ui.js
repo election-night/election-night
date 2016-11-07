@@ -5,27 +5,29 @@
 
     window.ns.toggleVisible = function toggleVisible(htmlElement) {
         htmlElement.toggleClass('visible');
-    }
+    };
+
+    window.ns.candidateInfo = {};
+    candidateInfo.firstName = $('#first-name').val();
+    candidateInfo.lastName = $('#last-name').val();
+    candidateInfo.image_url = $('#image-url').val();
+    candidateInfo.intelligence = $('#intelligence').val();
+    candidateInfo.charisma = $('#charisma').val();
+    candidateInfo.willpower = $('#willpower').val();
+    console.log('hello');
 
     $('.create-candidates')
         .on('click', function showCandidate(event) {
             event.preventDefault();
             window.ns.toggleVisible($('.create-a-candidate'));
+
         });
     $('.list-of-candidates')
         .on('click', function seeCandidates(event) {
             event.preventDefault();
             console.log('it works');
-            window.ns.toggleVisible($('.candidates'));
-            var candidateInfo = {};
-            candidateInfo.firstName = $('#first-name').val();
-            candidateInfo.lastName = $('#last-name').val();
-            candidateInfo.image_url = $('#image-url').val();
-            candidateInfo.intelligence = $('#intelligence').val();
-            candidateInfo.charisma = $('#charisma').val();
-            candidateInfo.willpower = $('#willpower').val();
-            console.log('hello');
-            window.ns.postCandidates(candidateInfo);
+            window.ns.toggleVisible($('.list-of-candidates'));
+            window.ns.candidateInfo
             // window.ns.
         });
     $('.show-campaigns')
