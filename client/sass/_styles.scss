@@ -28,9 +28,14 @@ input {
   border-radius: 5px;
 }
 
-.list-of-candidates {
+.candidates {
   margin: 0;
   padding: 0;
+  display: none;
+}
+
+.candidates.visible{
+  display: block;
 }
 
 .url-avatar {
@@ -41,13 +46,39 @@ input {
 
 .candidate-list {
   display: block;
-  float: left;
+  //float: left;
   padding: 0;
 
 }
 .candidate-attributes{
   display: inline;
   text-align: left;
+}
 
+.create-a-campaign {
+  display: none;
+}
 
+.create-a-campaign.visible {
+  display: block;
+  margin: 200px 100px 0 100px;
+}
+
+.candidate-battle {
+  display: inline;
+  padding-right: 20px;
+}
+
+.campaign-button {
+  background-color: #ffffff;
+  color: #0000ff;
+}
+
+.winner {
+  display: none;
+}
+
+.winner.visible {
+  display: block;
+  margin-left: 500px;
 }

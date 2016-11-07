@@ -1,39 +1,44 @@
-# This is used to select which database to use.
 ENV['RACK_ENV'] ||= 'development'
 
 require 'bundler/setup'
 require 'sinatra'
 require 'json'
-# require_relative './candidate'
-# require_relative './campaign'
 
 require_relative 'database'
 
 class App < Sinatra::Base
-  # Serve any HTML/CSS/JS from the client folder
   set :static, true
   set :public_folder, proc { File.join(root, '..', '..', 'client', 'public') }
 
-  # Enable the session store
   enable :sessions
 
-  # This ensures that we always return the content-type application/json
   before do
     content_type 'application/json'
   end
 
-  # DO NOT REMOVE THIS ENDPOINT IT ENABLES HOSTING HTML FOR THE FRONT END
   get '/' do
     content_type 'text/html'
     body File.read(File.join(settings.public_folder, 'index.html'))
   end
 
   get "/candidates" do #list all candidates
-    Candidate.all.to_json
+    candidates = Candidate.all
+    if candidates == []
+      status 404
+      {message: "No candidates exist"}.to_json
+    else
+      candidates.to_json
+    end
   end
 
   get "/campaigns" do #list all campaigns
-    Campaign.all.to_json
+    campaigns = Campaign.all
+    if campaigns == []
+      status 404
+      {message: "No campaigns exist"}.to_json
+    else
+      campaigns.to_json
+    end
   end
 
   get "/candidates/:id" do #list single candidate
@@ -46,7 +51,7 @@ class App < Sinatra::Base
     end
   end
 
-  get "/candidates/:id/wins" do
+  get "/candidates/:id/wins" do #list all win campaigns for single candidate
     candidate = Candidate.find_by(id: params["id"])
     wins = candidate.campaigns_won_list
     if candidate
@@ -65,11 +70,6 @@ class App < Sinatra::Base
   get "/candidates/:id/campaigns" do #list all campaigns for a single candidate
     candidate = Candidate.find_by(id: params["id"])
     campaigns = candidate.campaigns
-#     Company.where(
-#   "id = :id AND name = :name AND division = :division AND created_at > :accounting_date",
-#   { id: 3, name: "37signals", division: "First", accounting_date: '2005-01-01' }
-# ).first
-    #candidate_campaigns = Campaign.where(":candidates".include?(candidate))
     if candidate
       if campaigns == []
         status 404
@@ -83,16 +83,34 @@ class App < Sinatra::Base
     end
   end
 
-  patch "/candidates/:id/first_name" do
-    Candidate.find_by(id: params["id"]).update(first_name: params["update"])
+  patch "/candidates/:id/first_name" do #update first name
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate.update(first_name: JSON.parse(request.body.read)["first_name"])
+    else
+      status 404
+      {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+    end
   end
 
-  patch "/candidates/:id/last_name" do
-    Candidate.find_by(id: params["id"]).update(last_name: params["update"])
+  patch "/candidates/:id/last_name" do #update last name
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate.update(last_name: JSON.parse(request.body.read)["last_name"])
+    else
+      status 404
+      {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+    end
   end
 
-  patch "/candidates/:id/image_url" do
-    Candidate.find_by(id: params["id"]).update(image_url: params["update"])
+  patch "/candidates/:id/image_url" do #update image url
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate.update(image_url: JSON.parse(request.body.read)["image_url"])
+    else
+      status 404
+      {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+    end
   end
 
   delete "/candidates/:id" do #delete a single candidate
@@ -124,10 +142,12 @@ class App < Sinatra::Base
       status 422
       {message: "You didn't enter anything!"}.to_json
     else
-      campaign_info = JSON.parse(request_body)
-      campaign = Campaign.new {campaign_info}
+      candidate_ids = JSON.parse(request_body)
+      campaign = Campaign.new(candidates: [Candidate.find_by(id: candidate_ids["candidates"][0]),
+                                          Candidate.find_by(id: candidate_ids["candidates"][1])])
       if campaign.save
         status 201
+        campaign.pick_winner
         campaign.to_json
       else
         status 422
@@ -136,20 +156,28 @@ class App < Sinatra::Base
     end
   end
 
-  get "/candidates/:id/total_points" do
-
+  get "/candidates/:id/total_points" do #get total points for candidate
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      {points: candidate.total_points}.to_json
+    else
+      status 404
+      {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+    end
   end
 
-  patch "/candidates/:id/intelligence" do
-
-  end
-
-  patch "/candidates/:id/charisma" do
-
-  end
-
-  patch "/candidates/:id/willpower" do
-
+  patch "/candidates/:id/characteristics" do #update candidate characteristics
+    request_body = request.body.read
+    candidate_characteristics = JSON.parse(request_body)
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate.update(intelligence: candidate_characteristics["intelligence"])
+      candidate.update(charisma: candidate_characteristics["charisma"])
+      candidate.update(willpower: candidate_characteristics["willpower"])
+    else
+      status 404
+      {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+    end
   end
 
   run! if app_file == $PROGRAM_NAME

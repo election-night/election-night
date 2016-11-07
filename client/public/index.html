@@ -17,6 +17,8 @@
                 <li><a class='create-candidates' href='#'>Create Candidates</a></li>
                 <li><a class='list-of-candidates' href='#'>Show List of Candidates</a></li>
                 <li><a class='show-campaigns' href='#'>Show Previous Campaigns</a></li>
+                <li><a class='create-campaign' href='#'>Create A Campaign </a></li>
+
                 <!-- what other nav do we need? -->
                 <!-- how can we make a specific section below visible? HINT: look at the _nav.scss file! -->
             </ul>
@@ -64,19 +66,42 @@
             </form>
         </section>
 
-        </section>
-
-        <section class='list-of-candidates'>
+        <section class='candidates visible'>
           <ul class='candidate-list'>
-                <li class='candidate-attributes'><img src='http://www.clipartkid.com/images/578/size-of-this-preview-384-480-pixels-other-resolutions-192-9HUzzP-clipart.png' class='url-avatar'>
-                    <p>[ID 1] Lego Superman (intelligence: 6, willpower: 9, charisma: 8)</p></li>
-                <li class='candidate-attributes'><img src='http://www.clipartkid.com/images/578/size-of-this-preview-384-480-pixels-other-resolutions-192-9HUzzP-clipart.png' class='url-avatar'>
-                    <p>[ID 1] Lego Superman (intelligence: 6, willpower: 9, charisma: 8)</p></li>
                 <li class='candidate-attributes'><img src='http://www.clipartkid.com/images/578/size-of-this-preview-384-480-pixels-other-resolutions-192-9HUzzP-clipart.png' class='url-avatar'>
                     <p>[ID 1] Lego Superman (intelligence: 6, willpower: 9, charisma: 8)</p></li>
 
 
           </ul>
+        </section>
+
+        <section class='create-a-campaign visible'>
+          <form class='candidate'>
+              <aside class='candidate-battle'>
+                  <label for='candidate-id'>Candidate A</label>
+                  <input type='text' id='candidate-id' name='candidate-id' required>
+              </aside>
+
+              <!--<aside class='candidate-battle'>
+                <p>vs.</p>
+              </aside> -->
+
+              <aside class='candidate-battle'>
+                  <label for='candidate-id'>Candidate B</label>
+                  <input type='text' id='candidate-id' name='candidate-id' required>
+              </aside>
+
+              <aside class='candidate-battle'>
+                  <label for='campaign-button'></label>
+                  <input type='submit' value='Create Campaign' class='campaign-button' name='campaign-button'>
+              </aside>
+        </section>
+
+        <section class='winner visible'>
+          <h2> We have a winner! </h2>
+          <p> Candidate A and Candidate B campaigned hard, but this time...</p>
+          <h3> Candidate B Won! </h3>
+          <img src='http://www.clipartkid.com/images/578/size-of-this-preview-384-480-pixels-other-resolutions-192-9HUzzP-clipart.png' class='url-avatar'>
         </section>
 
     </main>

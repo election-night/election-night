@@ -3,7 +3,6 @@ require 'active_record'
 class Campaign < ActiveRecord::Base
 
   has_and_belongs_to_many :candidates
-  # validates :candidate1, :candidate2, presence: true
 
   def pick_winner
     candidate1 = candidates[0]
@@ -16,7 +15,6 @@ class Campaign < ActiveRecord::Base
     elsif candidate1.intelligence < candidate2.intelligence
       candidate2_points += 1
     else
-      nil
     end
 
     if candidate1.charisma > candidate2.charisma
@@ -24,7 +22,6 @@ class Campaign < ActiveRecord::Base
     elsif candidate1.charisma < candidate2.charisma
       candidate2_points += 1
     else
-      nil
     end
 
     if candidate1.willpower > candidate2.willpower
@@ -32,9 +29,7 @@ class Campaign < ActiveRecord::Base
     elsif candidate1.willpower < candidate2.willpower
       candidate2_points += 1
     else
-      nil
     end
-
 
     if candidate1_points > candidate2_points
       self.winner_id = candidate1.id

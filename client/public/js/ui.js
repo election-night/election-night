@@ -38,6 +38,19 @@
 
     // $('.candidate-battle')
     //     $(this).append('<li><img src="' + image_url + '>' )
+    $('.create-campaign')
+        .on('click', function showCampaignBattle(event) {
+            event.preventDefault();
+            console.log('it works');
+            window.ns.toggleVisible($('.create-a-campaign'));
+        });
+
+    $('.campaign-button')
+        .on('click', function showWinner(event) {
+            event.preventDefault();
+            console.log('it works');
+            window.ns.toggleVisible($('.winner'));
+        });
 
     console.log('UI file Connected');
 }());
