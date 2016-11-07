@@ -58,70 +58,157 @@
             .on('submit', function candidateId(event) {
                 event.preventDefault();
                 $.ajax({
-                        url: 'candidates/:id',
-                        method: 'GET',
-                        dataType: 'json',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                    .done(function candidateIdPass(data) {
-                        console.log('success', data)
-                    })
-                    .fail(function candidateIdFail(xhr) {
-                        console.log('failure', xhr);
-                    })
-            });
-
-            // Get Candidate Wins ajax
-
-            $( //'.')
-                .on('submit', function candidateIdWins(event) {
-                    event.preventDefault();
-                    $.ajax({
-                        url: 'candidates/:id/wins',
-                        method: 'GET',
-                        data: 'json',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                        .done(function candidateIdWinsPass(data) {
-                            console.log('pass', data)
-                        })
-                        .fail(function candidateIdWinsFail(xhr) {
-                            console.log('failure', xhr)
-                        })
-                    })
-                });
-
-
-
-                $('.create-campaign')
-                .on('submit', function createCampaign(event) {
-                    event.preventDefault();
-                    $.ajax({
-                            url: '/campaigns',
-                            method: 'POST',
+                    url: 'candidates/:id',
+                            method: 'GET',
                             dataType: 'json',
-                            // data: JSON.stringify{
-                            //   candidate.id:
-                            // },
                             headers: {
                                 'Content-Type': 'application/json'
                             }
                         })
-                        .done(function campaignSuccess(data) {
-                            console.log('It Worked', data);
+                        .done(function candidateIdPass(data) {
+                            console.log('success', data)
                         })
-                        .fail(function campaignFailure(xhr) {
-                            console.log('it failed', xhr);
+                        .fail(function candidateIdFail(xhr) {
+                            console.log('failure', xhr);
                         })
-
                 });
 
+                // Get Candidate Wins ajax
+
+        $( //'.')
+            .on('submit', function candidateIdWins(event) {
+                        event.preventDefault();
+                        $.ajax({
+                            url: '/candidates/:id/wins',
+                            method: 'GET',
+                            dataType: 'json',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                            .done(function candidateIdWinsPass(data) {
+                                console.log('pass', data)
+                            })
+                            .fail(function candidateIdWinsFail(xhr) {
+                                console.log('failure', xhr)
+                            })
+                        })
+                    });
+
+                    // get candidates campaigns involved ajax
+
+        $( //.'')
+            .on('submit', function candidateCampaigns(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: '/candidates/:id/campaigns',
+                    method: 'GET',
+                    dataType: 'json',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                    .done(function candidateCampaignPass(data) {
+                        console.log('success', data);
+                    })
+                    .fail(function candidateCampaignFail(xhr) {
+                        console.log('failure', xhr)
+                    })
+                })
+          });
+
+                        // PATCH METHOD FOR FIRST NAME
+       $( //'.')
+          .on('submit', function patchFirstName(event) {
+              event.preventDefault();
+              $.ajax({
+                      url: '/canidates/:id/first_name',
+                      method: 'PATCH',
+                      dataType: 'json',
+                      data: JSON.stringify({
+                          // first_name:
+                      }),
+                      headers: {
+                          'Content-Type': 'application/json'
+                      }
+                  })
+                  .done(function patchFirstNamePass(data) {
+                      console.log('success', data)
+                  })
+                  .fail(function patchFirstNameFail(xhr) {
+                      console.log('failure', xhr)
+                  })
+          })
+
+                            // PATCH METHOD FOR LAST NAME
+
+        $( //'.')
+            .on('submit', function patchLastName(event) {
+                event.preventDefault();
+                $.ajax({
+                        url: '/candidates/:id/last_name',
+                        method: 'PATCH',
+                        dataType: 'json',
+                        data: JSON.stringify({
+                            //last_name:
+                          })
+                        })
+                        .done(function patchLastNamePass(data) {
+                          console.log('success', data)
+                        })
+                        .fail(function patchLastNameFail(xhr) {
+                            console.log('failure', xhr)
+                  })
+            });
+
+                                // PATCH METHOD FOR image_url
+
+        $( //'.')
+            .on('submit', function patchImageUrl(event) {
+                event.preventDefault();
+                $.ajax({
+                        url: '/candidates/:id/image_url',
+                        method: 'PATCH',
+                        dataType: 'json',
+                        data: JSON.stringify({
+                                                    //image_url:
+                        }),
+                        headers: {
+                            'Content-Type': 'application/json'
+
+                    })
+                    .done(function patchImageUrlPass(data) {
+                        console.log('success', data);
+                    })
+                    .fail(function patchImageUrlFail(xhr) {
+                        console.log('failure', xhr);
+                    })
+            });
+
+        $('.create-campaign')
+              .on('submit', function createCampaign(event) {
+                  event.preventDefault();
+                  $.ajax({
+                          url: '/campaigns',
+                          method: 'POST',
+                          dataType: 'json',
+                          // data: JSON.stringify{
+                          //   candidate.id:
+                          // },
+                          headers: {
+                              'Content-Type': 'application/json'
+                          }
+                      })
+                      .done(function campaignSuccess(data) {
+                          console.log('It Worked', data);
+                      })
+                      .fail(function campaignFailure(xhr) {
+                          console.log('it failed', xhr);
+                      })
+
+              });
 
 
 
-                console.log('Data file Connected');
 
-            }());
+                                    console.log('Data file Connected');
+
+}());
