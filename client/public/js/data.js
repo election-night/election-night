@@ -230,8 +230,6 @@
                 })
               });
 
-        
-
         $('.create-campaign')
               .on('submit', function createCampaign(event) {
                   event.preventDefault();
@@ -255,9 +253,27 @@
 
               });
 
+        $(//'.')
+              .on('submit', function getCampaignInfo(event){
+                event.preventDefault();
+                $.ajax({
+                  url: '/candidates/:id/total_points',
+                  method: 'GET',
+                  dataType: 'json',
+                  headers: {
+                    'Content-Type':'application/json'
+                  }
+                })
+                .done(function getCampaignInfoPass(data) {
+                    console.log('It Worked', data);
+                })
+                .fail(function getCampaignInfoFail(xhr) {
+                    console.log('it failed', xhr);
+                })
+              });
 
 
 
-                                    console.log('Data file Connected');
+  console.log('Data file Connected');
 
 }());
