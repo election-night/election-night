@@ -73,7 +73,7 @@
                         })
                 });
 
-                // Get Candidate Wins ajax
+    // Get Candidate Wins ajax
 
         $( //'.')
             .on('submit', function candidateIdWins(event) {
@@ -94,7 +94,7 @@
                         })
                     });
 
-                    // get candidates campaigns involved ajax
+      // get candidates campaigns involved ajax
 
         $( //.'')
             .on('submit', function candidateCampaigns(event) {
@@ -115,7 +115,7 @@
                 })
           });
 
-                        // PATCH METHOD FOR FIRST NAME
+          // PATCH METHOD FOR FIRST NAME
        $( //'.')
           .on('submit', function patchFirstName(event) {
               event.preventDefault();
@@ -138,7 +138,7 @@
                   })
           })
 
-                            // PATCH METHOD FOR LAST NAME
+        // PATCH METHOD FOR LAST NAME
 
         $( //'.')
             .on('submit', function patchLastName(event) {
@@ -159,7 +159,7 @@
                   })
             });
 
-                                // PATCH METHOD FOR image_url
+          // PATCH METHOD FOR image_url
 
         $( //'.')
             .on('submit', function patchImageUrl(event) {
@@ -169,7 +169,7 @@
                         method: 'PATCH',
                         dataType: 'json',
                         data: JSON.stringify({
-                                                    //image_url:
+                          //image_url:
                         }),
                         headers: {
                             'Content-Type': 'application/json'
@@ -182,6 +182,55 @@
                         console.log('failure', xhr);
                     })
             });
+
+          // PATCH METHOD FOR characteristics
+
+        $(//'.')
+              .on('submit', function candidateCharacteristics(event){
+                event.preventDefault();
+                $.ajax({
+                  url: '/candidates/:id/characteristics',
+                  method: 'PATCH',
+                  dataType: 'json',
+                  data: JSON.stringify({
+                    // intelligence:
+                    // charisma:
+                    // willpower:
+                  }),
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                })
+                .done(function characteristicsPass(data){
+                  console.log('success', data);
+                })
+                .fail(function characteristicsFail(xhr){
+                  console.log('failure', xhr);
+                })
+              });
+
+        // DELETE METHOD TO REMOVE CANDIDATE
+
+        $(//'.')
+              .on('submit', function deleteCandidate(event){
+                $.ajax({
+                  url: '/candidates/:id',
+                  method: 'DELETE',
+                  dataType: 'json',
+                  headers: {
+                    'Content-Type':'application/json'
+                  }
+
+                })
+                .done(function DeletecandidatePass(data){
+                  console.log('success', data);
+                })
+                .fail(function DeletecandidateFail(xhr){
+                  console.log('failure', xhr);
+                })
+              });
+
+        
 
         $('.create-campaign')
               .on('submit', function createCampaign(event) {
